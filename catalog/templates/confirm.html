@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skystore confirm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-  body">
+            <p class="fw-bolder text-center">
+                Hello {{ name }}, thank you for your feedback!<br>
+                We will reach out to you soon.
+            </p>
+            <div class="mt-2 pt-2 border-top">
+                <a href="/" class="btn btn-primary " tabindex="-1" role="button">Primary link</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Initialize the toast with autohide set to false
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    var toastList = toastElList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl, {
+            autohide: false  // Prevent the toast from hiding automatically
+        })
+    })
+    toastList.forEach(toast => toast.show());
+</script>
+</body>
+</html>
