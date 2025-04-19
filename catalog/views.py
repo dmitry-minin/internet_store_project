@@ -17,3 +17,11 @@ def contacts(request):
 
         return render(request, 'confirm.html', {'name': name})
     return render(request, 'contacts.html')
+
+
+def product_details(request, product_id):
+    product = Product.objects.get(id=product_id)
+    context = {
+        'product': product
+    }
+    return render(request, 'product_details.html', context=context)
