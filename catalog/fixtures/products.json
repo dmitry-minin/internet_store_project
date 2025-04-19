@@ -1,0 +1,93 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Iphone 16",
+        "description": "Смартфон iphon16 256gb white",
+        "image": "products/Apple_iPhone_16.jpeg",
+        "category": 1,
+        "price": "100000.00",
+        "created_at": "2025-04-19T16:47:19.296Z",
+        "updated_at": "2025-04-19T17:14:21.016Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Samsung Galaxy S25 Ultra",
+        "description": "12/256 ГБ, Dual: nano SIM + eSIM, Titanium Black",
+        "image": "products/Galaxy_S25_Ultra.jpeg",
+        "category": 1,
+        "price": "90000.00",
+        "created_at": "2025-04-19T16:49:10.703Z",
+        "updated_at": "2025-04-19T17:15:37.105Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "Xiaomi 14 Ultra",
+        "description": "16/1 ТБ CN, Dual nano SIM, синий",
+        "image": "products/Xiaomi_14_Ultra.jpeg",
+        "category": 1,
+        "price": "150000.00",
+        "created_at": "2025-04-19T16:50:51.751Z",
+        "updated_at": "2025-04-19T17:15:49.051Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "Apple MacBook Air 15",
+        "description": "M4, 16/256Gb (MW1L3), Midnight Black",
+        "image": "products/MacBook_Air.jpeg",
+        "category": 2,
+        "price": "120000.00",
+        "created_at": "2025-04-19T16:54:48.315Z",
+        "updated_at": "2025-04-19T17:16:00.312Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "MacBook Pro 16",
+        "description": "(M4 Pro 14C CPU, 20C GPU, 24Gb, 512Gb SSD), MX2X3, Space Black",
+        "image": "products/MacBook_Pro_16.jpeg",
+        "category": 2,
+        "price": "220000.00",
+        "created_at": "2025-04-19T16:57:21.856Z",
+        "updated_at": "2025-04-19T17:16:10.646Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "Холодильник Gorenje NRK 6202 AXL4",
+        "description": "серебристый металлик 60х200х59.20 см",
+        "image": "products/Gorenje_NRK.jpeg",
+        "category": 3,
+        "price": "48000.00",
+        "created_at": "2025-04-19T17:01:06.566Z",
+        "updated_at": "2025-04-19T17:16:24.588Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "name": "посудомоечная машина Bosch",
+        "description": "Встраиваемая SMV4HVX31E Полноразмерная, встраиваемая полностью, ширина 59.8 см, вместимость: 13 комплектов, 6 программ мойки, инверторный двигатель, расход воды 10 л, интенсивная сушка класса A",
+        "image": "products/Bosch_SMV4HVX31E.jpeg",
+        "category": 3,
+        "price": "46000.00",
+        "created_at": "2025-04-19T17:03:17.874Z",
+        "updated_at": "2025-04-19T17:16:37.891Z"
+    }
+}
+]
