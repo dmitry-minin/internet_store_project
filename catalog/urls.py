@@ -17,13 +17,14 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from catalog.views import home, contacts
+from catalog.views import home, contacts, product_details
 
 app_name = 'catalog'
 
 urlpatterns = [
     path('', home, name='home'),
-    path('contacts/', contacts, name='contacts')
+    path('contacts/', contacts, name='contacts'),
+    path('product/<int:product_id>/', product_details, name='product_details'),
 ]
 
 if settings.DEBUG:
