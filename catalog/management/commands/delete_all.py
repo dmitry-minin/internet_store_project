@@ -8,24 +8,15 @@ class Command(BaseCommand):
     """
     Custom command to load data from fixtures.
     """
-    help = "Load data from fixtures."
+    help = " Delete all data from Product and Category models and reset sequences."
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            'fixtures',
-            nargs='+',
-            type=str,
-            help="List of fixture files to load (e.g., 'categories.json products.json')."
-        )
 
     def handle(self, *args, **options):
         """
         Handle the command.
         1 - Clear all data from Product and Category models.
         2 - Reset the sequences for Product and Category models.
-        3 - Load the specified fixtures.
         """
-        fixtures = options['fixtures']
         try:
             Product.objects.all().delete()
             Category.objects.all().delete()
@@ -35,9 +26,5 @@ class Command(BaseCommand):
                 cursor.execute("ALTER SEQUENCE catalog_product_id_seq RESTART WITH 1;")
                 cursor.execute("ALTER SEQUENCE catalog_category_id_seq RESTART WITH 1;")
             self.stdout.write(self.style.SUCCESS("Sequences reset successfully."))
-
-            for fixture in fixtures:
-                call_command('loaddata', fixture)
-                self.stdout.write(self.style.SUCCESS(f"Successfully loaded fixture: {fixture}"))
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"Error clearing data: {e}"))

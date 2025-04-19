@@ -7,7 +7,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category', 'price')
     search_fields = ('name', 'category')
     list_filter = ('category',)
-    ordering = ('-created_at',)
+    ordering = ('name',)
 
 
 @admin.register(Category)

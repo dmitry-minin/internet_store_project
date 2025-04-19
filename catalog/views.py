@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect
 
+from catalog.models import Product
+
 
 def home(request):
-    return render(request, 'home.html')
+    product = Product.objects.all()
+    context = {
+        'products': product
+    }
+    return render(request, 'products_list.html', context=context)
 
 
 def contacts(request):
