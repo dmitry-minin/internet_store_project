@@ -1,14 +1,19 @@
 from django.shortcuts import render, redirect
-
 from catalog.models import Product
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
-def home(request):
-    product = Product.objects.all()
-    context = {
-        'products': product
-    }
-    return render(request, 'products_list.html', context=context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products_list.html'
+    context_object_name = 'products'
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_details.html'
+    context_object_name = 'product'
 
 
 def contacts(request):
