@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="px-3 py-3 pt-md-3 pb-md-4 mx-auto text-center mb-5">
+    <h2>Вы находитесь в режиме редактирования</h2>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Добавить новый продукт</h3>
+                    <a href="{% url 'catalog:product_create' %}" class="btn btn-success">Создать</a>
+                </div>
+            </div>
+            {% regroup products by category as grouped_products %}
+
+            {% for group in grouped_products %}
+            <div class="mb-4">
+                <h4 class="fw-bold">{{ group.grouper }}</h4>
+                <ul class="list-unstyled ms-3">
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        {% for product in group.list %}
+                        <div class="col">
+                            <li class="mb-2">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body text-center">
+                                        <h5>{{ product.name }}</h5>
+                                        <p>Описание {{ product.description }}</p>
+                                        <p>Цена: {{ product.price }} Руб</p>
+                                        <p>Создан {{ product.created_at }}</p>
+                                        <p>Обновлен {{ product.updated_at }}</p>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="{% url 'catalog:product_update' product.id %}"
+                                               class="btn btn-warning btn-sm">Редактировать</a>
+                                            <a href="{% url 'catalog:product_delete' product.id %}"
+                                               class="btn btn-danger btn-sm">Удалить</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

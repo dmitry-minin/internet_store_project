@@ -6,8 +6,10 @@
 <div class="col-4">
     <div class="card mb-4 box-shadow">
         <div class="card-header">
+            {% if product.image %}
             <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image"
                  style="width: 300px; height: 300px; object-fit: contain;">
+            {% endif %}
         </div>
         <div class="card-body">
             <h2 class="card-title pricing-card-title">{{ product.name }}</h2>
@@ -19,6 +21,8 @@
             </ul>
             <a href="{% url 'catalog:home' %}"
                class="btn btn-lg btn-block btn-outline-primary">На главную</a>
+            <a href="{% url 'catalog:product_update' product.id %}"
+               class="btn btn-lg btn-block btn-outline-warning">Редактировать</a>
             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
         </div>
     </div>
