@@ -7,12 +7,14 @@
 <div class="col-3">
     <div class="card mb-4 box-shadow">
         <div class="card-header">
+            {% if product.image %}
             <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image"
                  style="width: 200px; height: 200px; object-fit: contain">
+            {% endif %}
         </div>
         <div class="card-body">
-            <h4 class="card-title pricing-card-title">{{ product.name|truncatechars:100 }}</h4>
-            <a href="{% url 'catalog:product_details' product.id %}"
+            <h4 class="card-title pricing-card-title">{{ post.name|truncatechars:100 }}</h4>
+            <a href="{% url 'catalog:product_detail' product.id %}"
                class="btn btn-lg btn-block btn-outline-primary">Детали</a>
             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
         </div>
