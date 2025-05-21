@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Authorization{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6" style="margin: 0 auto;">
+            <form class="row" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center">Please enter your email and password to log in.</h1>
+                        <p class="text-center">If you don't have an account, please <a
+                                href="{% url 'users:register' %}">register</a> first.</p>
+                        <div class="mb-3 text-start">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-success">Войти</button>
+                        <a href="{% url 'catalog:home' %}" class="btn btn-secondary">Отмена</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
