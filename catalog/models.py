@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 class Category(models.Model):
@@ -36,6 +37,15 @@ class Product(models.Model):
         verbose_name="Категория продукта",
     )
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
+    owner = models.ForeignKey(
+        User,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name="products",
+        verbose_name="Владелец продукта",
+    )
+    published = models.BooleanField(default=False, null=True, blank=True, verbose_name="Опубликовать")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(
         auto_now=True,
@@ -49,3 +59,6 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["name"]
+        permissions = [
+            ("can_unpublish_product", "Может публиковать продукт")
+        ]
