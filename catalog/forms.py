@@ -62,6 +62,9 @@ class CategoryForm(MixinProductFormStyle, forms.ModelForm):
 
 
 class ProductForm(MixinProductFormStyle, forms.ModelForm):
+    """
+    Форма для создания и редактирования продуктов пользователями.
+    """
     class Meta:
         model = Product
         fields = [
@@ -99,3 +102,27 @@ class ProductForm(MixinProductFormStyle, forms.ModelForm):
         if image:
             validate_image(image)
         return image
+
+
+class ProductModeratorForm(MixinProductFormStyle, forms.ModelForm):
+    """
+    Форма для публикации продуктов модератором.
+    """
+    class Meta:
+        model = Product
+        fields = [
+            "name",
+            "description",
+            "image",
+            "category",
+            "price",
+            "published",
+            "owner",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        readonly_fields = ['name', 'description', 'image', 'category', 'price', 'owner']
+        for field_name in readonly_fields:
+            if field_name in self.fields:
+                self.fields[field_name].disabled = True

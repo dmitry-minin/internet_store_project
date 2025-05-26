@@ -18,10 +18,13 @@
                 <li> Описание товара: {{ product.description }}</li>
                 <li> Цена: {{ product.price }} Руб</li>
                 <li> Актуально на {{ product.updated_at|date:'d M Y' }}</li>
+                {% if product.owner or perms.catalog.can_unpublish_product %}
+                <li> Владелец товара: {{ product.owner }}</li>
+                {% endif %}
             </ul>
             <a href="{% url 'catalog:home' %}"
                class="btn btn-lg btn-block btn-outline-primary">На главную</a>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user == product.owner %}
             <a href="{% url 'catalog:product_update' product.id %}"
                class="btn btn-lg btn-block btn-outline-warning">Редактировать</a>
             {% endif %}
