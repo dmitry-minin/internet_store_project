@@ -44,13 +44,17 @@
                                         <h5>{{ product.name }}</h5>
                                         <p>Описание {{ product.description }}</p>
                                         <p>Цена: {{ product.price }} Руб</p>
+                                        <p>Владелец: {{ product.owner }} </p>
+                                        <p>Опубликован: {{ product.published }}</p>
                                         <p>Создан {{ product.created_at }}</p>
                                         <p>Обновлен {{ product.updated_at }}</p>
                                         <div class="d-flex justify-content-center gap-2">
+                                            {% if user == product.owner or perms.catalog.can_unpublish_product%}
                                             <a href="{% url 'catalog:product_update' product.id %}"
                                                class="btn btn-warning btn-sm">Редактировать</a>
                                             <a href="{% url 'catalog:product_delete' product.id %}"
                                                class="btn btn-danger btn-sm">Удалить</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
