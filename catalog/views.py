@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from catalog.models import Product, Category
@@ -38,7 +39,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     def get_form_class(self):
         if self.request.user.has_perm('catalog.add_product'):
             return ProductForm
-        return HttpResponseForbidden("You do not have permission to create a product.")
+        return PermissionDenied
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -56,7 +57,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
             return ProductForm
         elif self.request.user.has_perm('catalog.can_unpublish_product'):
             return ProductModeratorForm
-        return HttpResponseForbidden("You do not have permission to edit this product.")
+        return PermissionDenied
 
     def get_success_url(self):
         return reverse('catalog:product_detail', kwargs={'pk': self.object.pk})
@@ -65,7 +66,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'product_confirm_delete.html'
-    success_url = reverse_lazy('catalog:home')
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
