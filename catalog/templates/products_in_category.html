@@ -6,9 +6,11 @@
 <div class="row">
     <div class="col-md-3 mb-4">
         <ul class="list-group">
-            <a class="list-group-item active" href="{% url 'catalog:home' %}" aria-current="true">Все продукты</a>
+            <a class="list-group-item {% if not category_id %}active{% endif %}" href="{% url 'catalog:home' %}"
+               aria-current="true">Все продукты</a>
             {% for category in categories %}
-            <a class="list-group-item" href="{% url 'catalog:products_in_category' category.id %}">{{ category.name }}</a>
+            <a class="list-group-item {% if category.id == category_id %}active{% endif %}"
+               href="{% url 'catalog:products_in_category' category.id %}">{{ category.name }}</a>
             {% endfor %}
         </ul>
     </div>
